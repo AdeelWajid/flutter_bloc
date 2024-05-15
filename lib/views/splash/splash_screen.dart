@@ -1,9 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_blocs/config/components/itnernet_exceiption_widget.dart';
-import 'package:flutter_blocs/config/components/loading_widget.dart';
-
-import '../../config/components/round_button.dart';
+import 'package:flutter_blocs/services/splash/splash_services.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,18 +9,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final SplashServices _splashServices = SplashServices();
+
+  @override
+  void initState() {
+    super.initState();
+    _splashServices.isLogin(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Column(
-          
-            children: [
-              InternetExceptionWidget(onPressed: (){},)
-            ],
-          ),
-        ),
+        child: Center(child: Text("Splash Screen")),
       ),
     );
   }
